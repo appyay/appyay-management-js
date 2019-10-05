@@ -1,6 +1,6 @@
-# Appyay.js
+# Appyay Management Javascript SDK
 
-Client Javascript library for Appyay Content Management API.
+Client Javascript library (node and browser) for Appyay Content Management API.
 
 ## Usage
 Not yet on NPM
