@@ -1,6 +1,6 @@
 # Appyay Management Javascript SDK
 
-Client Javascript library (node and browser) for (Appyay)[https://appyay.com] Content Management API.
+Client Javascript library (node and browser) for [Appyay](https://appyay.com) Content Management API.
 
 # Getting started
 
