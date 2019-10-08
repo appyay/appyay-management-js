@@ -7,21 +7,21 @@ export default function addItemMethods (item, config) {
             fields: item.fields
         });
     }
-    
-    item.delete = function(itemId){
-        return itemApi.deleteItem(config, itemId);
-    }
 
     item.publish = function(){
-        return itemApi.updateContentType(config, contentTypeId, {
+        return itemApi.updateItem(config, item.id, {
             status: 'published'
         });
     }
 
     item.revertToDraft = function(){
-        return itemApi.updateContentType(config, contentTypeId, {
+        return itemApi.updateItem(config, item.id, {
             status: 'draft'
         });
+    }
+
+    item.delete = function(){
+        return itemApi.deleteItem(config, item.id);
     }
 
     item.isDraft = function(){

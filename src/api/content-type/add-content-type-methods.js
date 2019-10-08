@@ -1,13 +1,15 @@
 import contentTypeApi from './content-type.api';
+import itemApi from '../item/item.api';
 
 export default function addContentTypeMethods (contentType, config) {
 
   contentType.getItems = function(query={}){
+    console.log('ct config', config)
     return contentTypeApi.getItems(config, contentType.id, query);
   }
 
   contentType.addItem = function(data){
-    return contentTypeApi.createItem(config, contentType.id, data);
+    return itemApi.createItem(config, contentType.id, data);
   }
 
   //TODO

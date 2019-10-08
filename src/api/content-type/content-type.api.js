@@ -12,7 +12,8 @@ class ContentTypeAPI{
    * @example
    * const appyay = require('appyay')
    * const client = appyay.createClient({
-   *  apikey: '<api_key>',
+    *  accessToken: '<access_token>', // for write access
+    *  apikey: '<api_key>', // for read access
    *  environmentId: '<environment_id>'
    * })
    *
@@ -30,7 +31,7 @@ class ContentTypeAPI{
         config
         ))
       .then(response => {
-        return addContentTypeMethods(response.data, config)
+        return addContentTypeMethods(response.data.contentType, config)
       })
       .catch(function (error) {
         return error
@@ -45,7 +46,8 @@ class ContentTypeAPI{
    * @example
    * const appyay = require('appyay')
    * const client = appyay.createClient({
-   *  apikey: '<api_key>',
+    *  accessToken: '<access_token>', // for write access
+    *  apikey: '<api_key>', // for read access
    *  environmentId: '<environment_id>'
    * })
    *
@@ -63,7 +65,7 @@ class ContentTypeAPI{
         query
         ))
       .then(response => {
-        response.data.items = response.data.items.map((item) => addItemMethods(item, config.http))
+        response.data.items = response.data.items.map((item) => addItemMethods(item, config))
         return response.data
       })
       .catch(function (error) {
@@ -81,7 +83,8 @@ class ContentTypeAPI{
    * @example
    * const appyay = require('appyay')
    * const client = appyay.createClient({
-   *  apikey: '<api_key>',
+    *  accessToken: '<access_token>', // for write access
+    *  apikey: '<api_key>', // for read access
    *  environmentId: '<environment_id>'
    * })
    *
@@ -123,7 +126,8 @@ class ContentTypeAPI{
    * @example
    * const appyay = require('appyay')
    * const client = appyay.createClient({
-   *  apikey: '<api_key>',
+    *  accessToken: '<access_token>', // for write access
+    *  apikey: '<api_key>', // for read access
    *  environmentId: '<environment_id>'
    * })
    *

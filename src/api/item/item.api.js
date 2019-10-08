@@ -12,7 +12,8 @@ class ItemAPI{
    * @example
    * const appyay = require('appyay')
    * const client = appyay.createClient({
-   *  apikey: '<api_key>',
+    *  accessToken: '<access_token>', // for write access
+    *  apikey: '<api_key>', // for read access
    *  environmentId: '<environment_id>'
    * })
    *
@@ -30,7 +31,7 @@ class ItemAPI{
         config
         ))
       .then(response => {
-        return addItemMethods(response.data.item, config.http)
+        return addItemMethods(response.data.item, config)
       })
       .catch(function (error) {
         return error
@@ -47,7 +48,8 @@ class ItemAPI{
    * @example
    * const appyay = require('appyay')
    * const client = appyay.createClient({
-   *  apikey: '<api_key>',
+    *  accessToken: '<access_token>', // for write access
+    *  apikey: '<api_key>', // for read access
    *  environmentId: '<environment_id>'
    * })
    *
@@ -73,7 +75,7 @@ class ItemAPI{
         config
         ))
       .then(response => {
-        return addItemMethods(response.data.item, config.http)
+        return addItemMethods(response.data.item, config)
       })
       .catch(function (error) {
         return error
@@ -90,7 +92,8 @@ class ItemAPI{
    * @example
    * const appyay = require('appyay')
    * const client = appyay.createClient({
-   *  apikey: '<api_key>',
+    *  accessToken: '<access_token>', // for write access
+    *  apikey: '<api_key>', // for read access
    *  environmentId: '<environment_id>'
    * })
    *
@@ -115,7 +118,7 @@ class ItemAPI{
         config
         ))
       .then(response => {
-        return addItemMethods(response.data.item, config.http)
+        return addItemMethods(response.data.item, config)
       })
       .catch(function (error) {
         return error
@@ -130,7 +133,8 @@ class ItemAPI{
    * @example
    * const appyay = require('appyay')
    * const client = appyay.createClient({
-   *  apikey: '<api_key>',
+    *  accessToken: '<access_token>', // for write access
+    *  apikey: '<api_key>', // for read access
    *  environmentId: '<environment_id>'
    * })
    *

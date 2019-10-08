@@ -95,6 +95,7 @@ if (env === 'node') {
 if (env === 'test') {
   babelConfig = Object.assign(babelConfig, {
     'presets': [
+      "@babel/preset-env",
       ['env', testBabelPresetEnvConfig]
     ],
     'plugins': babelConfig.plugins.concat([

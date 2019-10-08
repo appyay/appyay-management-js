@@ -17,7 +17,8 @@ import itemApi from './item/item.api';
  * @example
  * const appyay = require('appyay')
  * const client = appyay.createClient({
- *  apikey: '<api_key>',
+  *  accessToken: '<access_token>', // for write access
+  *  apikey: '<api_key>', // for read access
  *  environmentId: '<environment_id>'
  * })
  */
@@ -49,6 +50,13 @@ export default function api (config) {
    */
   function getContentTypes () {
     return environmentApi.getContentTypes(config)
+  }
+
+  /**
+   * Get Content Type
+   */
+  function getContentType (contentTypeId) {
+    return contentTypeApi.getContentType(config, contentTypeId)
   }
 
   /**
@@ -89,6 +97,7 @@ export default function api (config) {
   return {
     getSpace: getSpace,
     getContentTypes: getContentTypes,
+    getContentType: getContentType,
     getItems: getItems,
     getItem: getItem,
     createItem: createItem,
