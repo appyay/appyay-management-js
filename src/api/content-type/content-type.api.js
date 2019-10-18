@@ -43,6 +43,7 @@ class ContentTypeAPI{
    * @memberof ContentTypeAPI
    * @param  {Object} config - Config object
    * @param  {string} contentTypeId
+   * @param  {Object=} query - Object with search parameters
    * @example
    * const appyay = require('appyay')
    * const client = appyay.createClient({

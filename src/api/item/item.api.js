@@ -12,8 +12,8 @@ class ItemAPI{
    * @example
    * const appyay = require('appyay')
    * const client = appyay.createClient({
-    *  accessToken: '<access_token>', // for write access
-    *  apikey: '<api_key>', // for read access
+   *  accessToken: '<access_token>', // for write access
+   *  apikey: '<api_key>', // for read access
    *  environmentId: '<environment_id>'
    * })
    *
@@ -48,8 +48,8 @@ class ItemAPI{
    * @example
    * const appyay = require('appyay')
    * const client = appyay.createClient({
-    *  accessToken: '<access_token>', // for write access
-    *  apikey: '<api_key>', // for read access
+   *  accessToken: '<access_token>', // for write access
+   *  apikey: '<api_key>', // for read access
    *  environmentId: '<environment_id>'
    * })
    *
@@ -92,8 +92,8 @@ class ItemAPI{
    * @example
    * const appyay = require('appyay')
    * const client = appyay.createClient({
-    *  accessToken: '<access_token>', // for write access
-    *  apikey: '<api_key>', // for read access
+   *  accessToken: '<access_token>', // for write access
+   *  apikey: '<api_key>', // for read access
    *  environmentId: '<environment_id>'
    * })
    *
@@ -126,6 +126,46 @@ class ItemAPI{
   }
 
   /**
+   * Update multiple Items
+   * @memberof ItemAPI
+   * @param  {Object} config - Config object
+   * @param  {Object} data - Data object
+   * @param  {Object=} query - Object with search parameters
+   * @example
+   * const appyay = require('appyay')
+   * const client = appyay.createClient({
+   *  accessToken: '<access_token>', // for write access
+   *  apikey: '<api_key>', // for read access
+   *  environmentId: '<environment_id>'
+   * })
+   *
+   * client.updateItems('<content_type_id>', {
+   *   fields: {
+   *     title: 'Updated item'
+   *   }
+   * })
+   * .then(() => console.log('Items updated'))
+   * .catch(console.error)
+   */
+  updateItems(config, contentTypeId, data, query = {}){
+    if (!contentTypeId) {
+      throw new Error('Content Type ID is missing')
+    }
+    if (!data) {
+      throw new Error('Data is missing')
+    }
+    return config.http
+      .put(`/cm/v1/content-types/${contentTypeId}/items`, {item: data}, getParams(
+        'cm',
+        config,
+        query
+        ))
+      .catch(function (error) {
+        return error
+      })
+  }
+
+  /**
    * Delete Item
    * @memberof ItemAPI
    * @param  {string} itemId
@@ -151,5 +191,39 @@ class ItemAPI{
         return error
       })
   }
+
+  /**
+   * Delete multiple Items
+   * @memberof ItemAPI
+   * @param  {Object} config - Config object
+   * @param  {Object} data - Data object
+   * @param  {Object=} query - Object with search parameters
+   * @example
+   * const appyay = require('appyay')
+   * const client = appyay.createClient({
+   *  accessToken: '<access_token>', // for write access
+   *  apikey: '<api_key>', // for read access
+   *  environmentId: '<environment_id>'
+   * })
+   *
+   * client.deleteItems('<content_type_id>')
+   * .then(() => console.log('Items deleted'))
+   * .catch(console.error)
+   */
+  deleteItems(config, contentTypeId, query = {}){
+    if (!contentTypeId) {
+      throw new Error('Content Type ID is missing')
+    }
+    return config.http
+      .delete(`/cm/v1/content-types/${contentTypeId}/items`, getParams(
+        'cm',
+        config,
+        query
+        ))
+      .catch(function (error) {
+        return error
+      })
+  }
 }
+
 export default new ItemAPI;

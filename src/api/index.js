@@ -60,10 +60,17 @@ export default function api (config) {
   }
 
   /**
-   * Get Items
+   * Get Items of a Content Type
    */
   function getItems (contentTypeId, query = {}) {
     return contentTypeApi.getItems(config, contentTypeId, query)
+  }
+
+  /**
+   * Get Items of an Environment
+   */
+  function getEnvironmentItems (query = {}) {
+    return environmentApi.getItems(config, query)
   }
 
   /**
@@ -71,6 +78,22 @@ export default function api (config) {
    */
   function getItem (itemId) {
     return itemApi.getItem(config, itemId)
+  }
+
+  
+  /**
+   * Get Item by slug
+   */
+  function getItemBySlug (itemSlug, query = {}) {
+    return new Promise(async function(resolve, reject){
+      query.slug = itemSlug;
+      query.limit = 1;
+      let response = await getEnvironmentItems(query);
+      if(response.items.length){
+        resolve({item: response.items[0]});
+      }
+      resolve(null);
+    });
   }
 
   /**
@@ -87,6 +110,13 @@ export default function api (config) {
     return itemApi.updateItem(config, itemId, data)
   }
 
+   /**
+   * Update multiple Items
+   */
+  function updateItems (contentTypeId, data, query = {}) {
+    return itemApi.updateItems(config, contentTypeId, data, query)
+  }
+
   /**
    * Delete Item
    */
@@ -94,14 +124,26 @@ export default function api (config) {
     return itemApi.deleteItem(config, itemId)
   }
 
+  /**
+   * Delete multiple Items
+   */
+  function deleteItems (contentTypeId, query = {}) {
+    console.log('delete items')
+    return itemApi.deleteItems(config, contentTypeId, query)
+  }
+
   return {
     getSpace: getSpace,
     getContentTypes: getContentTypes,
     getContentType: getContentType,
     getItems: getItems,
+    getEnvironmentItems: getEnvironmentItems,
     getItem: getItem,
+    getItemBySlug: getItemBySlug,
     createItem: createItem,
     updateItem: updateItem,
-    deleteItem: deleteItem
+    updateItems: updateItems,
+    deleteItem: deleteItem,
+    deleteItems: deleteItems
   }
 }

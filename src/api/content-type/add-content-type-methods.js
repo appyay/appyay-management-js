@@ -4,7 +4,6 @@ import itemApi from '../item/item.api';
 export default function addContentTypeMethods (contentType, config) {
 
   contentType.getItems = function(query={}){
-    console.log('ct config', config)
     return contentTypeApi.getItems(config, contentType.id, query);
   }
 
