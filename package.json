@@ -63,7 +63,7 @@
     "tape-promise": "^4.0.0",
     "uglifyjs-webpack-plugin": "^1.2.7",
     "webpack": "^4.12.2",
-    "webpack-cli": "^3.0.8",
+    "webpack-cli": "^3.3.12",
     "yargs": "^10.0.3"
   },
   "resolutions": {
